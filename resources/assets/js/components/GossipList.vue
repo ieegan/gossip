@@ -20,30 +20,6 @@
 <script>
 
 	export default {
-		methods: {
-			fetchGossips() {
-				var self = this;
-				axios.post('/show-gossip', {
-					page: self.page
-				})
-				.then(function (response) {
-					console.log(response);
-					self.gossips = response.data.data
-					self.page++
-				})
-				.catch(function (error) {
-					console.log(error);
-				});
-			}
-		},
-		data() {
-			return {
-				page: 0,
-				gossips: []
-			};
-		},
-		mounted: function(){
-			this.fetchGossips();
-		}
+		props: ['gossips']
 	}
 </script>

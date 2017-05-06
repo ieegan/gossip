@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGossipsTable extends Migration
+class CreateRatingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateGossipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gossips', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->text('body');
-            $table->boolean('anonymous')->default(false);
-            $table->integer('true')->default(0);
-            $table->integer('false')->default(0);
-            $table->boolean('verified')->default(false);
-            $table->integer('credibility')->default(0);
+            $table->boolean('vote')->default(false);
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateGossipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gossips');
+        Schema::dropIfExists('ratings');
     }
 }

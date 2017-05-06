@@ -24,10 +24,6 @@ class GossipController extends Controller
      */
     public function index(Request $request)
     {
-        // $offset = $request['page'] ? $request['page'] * 10 : 0;
-
-        // return Gossip::latest()->limit(10)->offset($offset)->get();
-
         return Gossip::with('user','user.socialaccounts')->latest()->paginate(10);
     }
 
@@ -42,15 +38,15 @@ class GossipController extends Controller
         $request['anonymous'] = $request['anonymous'] ? 1 : 0;
 
         $this->validate(request(),[
-           'body' => 'required',
-           'anonymous' => 'boolean',
-           ]);
+         'body' => 'required',
+         'anonymous' => 'boolean',
+         ]);
 
         auth()->user()->publish(
             new Gossip(request(['body','anonymous']))
             );
 
-        return redirect('/');
+        return Gossip::with('user','user.socialaccounts')->latest()->first();
     }
 
     /**
