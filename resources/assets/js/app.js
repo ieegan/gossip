@@ -224,7 +224,7 @@ let app = new Vue({
         },
 
         checkLastPage() {
-            if(this.lastpage!=this.page)
+            if(this.lastpage<=this.page)
                 this.fetchGossips()
             else
                 this.lastpagereached = false
@@ -260,6 +260,5 @@ var myElement = document.getElementById("bottom");
 var elementWatcher = scrollMonitor.create(myElement);
 
 elementWatcher.enterViewport(function() {
-    console.log('youve reached bottom')
     app.checkLastPage();
 });

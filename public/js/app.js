@@ -1068,7 +1068,7 @@ var app = new Vue({
             this.gossips.unshift(data);
         },
         checkLastPage: function checkLastPage() {
-            if (this.lastpage != this.page) this.fetchGossips();else this.lastpagereached = false;
+            if (this.lastpage <= this.page) this.fetchGossips();else this.lastpagereached = false;
         },
         fetchGossips: function fetchGossips() {
             var self = this;
@@ -1097,7 +1097,6 @@ var myElement = document.getElementById("bottom");
 var elementWatcher = scrollMonitor.create(myElement);
 
 elementWatcher.enterViewport(function () {
-    console.log('youve reached bottom');
     app.checkLastPage();
 });
 
