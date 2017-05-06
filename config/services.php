@@ -38,13 +38,13 @@ return [
     'facebook' => [
         'client_id' =>  env('FACEBOOK_CLIENT_ID'),
         'client_secret' =>  env('FACEBOOK_CLIENT_SECRET'),
-        'redirect' => 'http://gossip.dev/callback/facebook',
+        'redirect' => env('APP_URL').'callback/facebook',
     ],
 
     'twitter' => [
         'client_id' => env('TWITTER_CLIENT_ID'),
         'client_secret' => env('TWITTER_CLIENT_SECRET'),
-        'redirect' => 'http://gossip.dev/callback/twitter',
+        'redirect' => env('APP_URL').'callback/twitter',
     ],
 
 ];
