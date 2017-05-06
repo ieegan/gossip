@@ -4,10 +4,10 @@
 		<gossip v-for="gossip in gossips" :key="gossip.id">
 			<template slot="name" v-if="!gossip.anonymous">
 				{{ gossip.user.name }}
-				<ul v-if="gossip.user.socialaccounts">
+				<ul class="socialaccount" v-if="gossip.user.socialaccounts">
 					<li v-for="socialaccount in gossip.user.socialaccounts">
-						<a target="_blank" :href="'https://www.facebook.com/' + socialaccount.provider_user_id" v-if="socialaccount.provider === 'FacebookProvider'">Facebook</a>
-						<a target="_blank" :href="'https://twitter.com/intent/user?user_id=' + socialaccount.provider_user_id" v-else-if="socialaccount.provider === 'TwitterProvider'">Twitter</a>
+						<a class="FacebookProvider" target="_blank" :href="'https://www.facebook.com/' + socialaccount.provider_user_id" v-if="socialaccount.provider === 'FacebookProvider'"></a>
+						<a class="TwitterProvider" target="_blank" :href="'https://twitter.com/intent/user?user_id=' + socialaccount.provider_user_id" v-else-if="socialaccount.provider === 'TwitterProvider'"></a>
 					</li>
 				</ul>
 			</template>
@@ -18,7 +18,6 @@
 </template>
 
 <script>
-
 	export default {
 		props: ['gossips']
 	}

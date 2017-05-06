@@ -202,6 +202,7 @@ let app = new Vue({
     el: '#app',
 
     data: {
+        navactive: false,
         form: new Form({
             body: '',
             anonymous: true
@@ -213,10 +214,13 @@ let app = new Vue({
     },
 
     methods: {
+        navToggle(){
+            this.navactive = !this.navactive;
+        },
+
         onSubmit() {
             this.form.post('/post-gossip')
                 .then(response =>  this.unshiftGossip(response))
-                .catch(error => alert('boohoo!'));
         },
 
         unshiftGossip(data) {

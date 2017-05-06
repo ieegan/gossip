@@ -1044,6 +1044,7 @@ var app = new Vue({
     el: '#app',
 
     data: {
+        navactive: false,
         form: new Form({
             body: '',
             anonymous: true
@@ -1055,13 +1056,14 @@ var app = new Vue({
     },
 
     methods: {
+        navToggle: function navToggle() {
+            this.navactive = !this.navactive;
+        },
         onSubmit: function onSubmit() {
             var _this2 = this;
 
             this.form.post('/post-gossip').then(function (response) {
                 return _this2.unshiftGossip(response);
-            }).catch(function (error) {
-                return alert('boohoo!');
             });
         },
         unshiftGossip: function unshiftGossip(data) {
@@ -1973,7 +1975,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
 	props: ['gossips']
 });
@@ -2258,18 +2259,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       key: gossip.id
     }, [(!gossip.anonymous) ? _c('template', {
       slot: "name"
-    }, [_vm._v("\n\t\t\t" + _vm._s(gossip.user.name) + "\n\t\t\t"), (gossip.user.socialaccounts) ? _c('ul', _vm._l((gossip.user.socialaccounts), function(socialaccount) {
+    }, [_vm._v("\n\t\t\t" + _vm._s(gossip.user.name) + "\n\t\t\t"), (gossip.user.socialaccounts) ? _c('ul', {
+      staticClass: "socialaccount"
+    }, _vm._l((gossip.user.socialaccounts), function(socialaccount) {
       return _c('li', [(socialaccount.provider === 'FacebookProvider') ? _c('a', {
+        staticClass: "FacebookProvider",
         attrs: {
           "target": "_blank",
           "href": 'https://www.facebook.com/' + socialaccount.provider_user_id
         }
-      }, [_vm._v("Facebook")]) : (socialaccount.provider === 'TwitterProvider') ? _c('a', {
+      }) : (socialaccount.provider === 'TwitterProvider') ? _c('a', {
+        staticClass: "TwitterProvider",
         attrs: {
           "target": "_blank",
           "href": 'https://twitter.com/intent/user?user_id=' + socialaccount.provider_user_id
         }
-      }, [_vm._v("Twitter")]) : _vm._e()])
+      }) : _vm._e()])
     })) : _vm._e()]) : _vm._e(), _vm._v("\n\t\t" + _vm._s(gossip.body) + "\n\t")], 2)
   }))
 },staticRenderFns: []}
@@ -2294,32 +2299,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "media-content"
   }, [_c('div', {
     staticClass: "content"
-  }, [_c('p', [_c('strong', [_vm._t("name", [_vm._v("Anonymous")])], 2), _vm._v(" "), _c('small', [_vm._v("34m")]), _vm._v(" "), _c('br'), _vm._v(" "), _vm._t("default")], 2)]), _vm._v(" "), _vm._m(0)])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('nav', {
-    staticClass: "level is-mobile"
-  }, [_c('div', {
-    staticClass: "level-left"
-  }, [_c('a', {
-    staticClass: "level-item"
-  }, [_c('span', {
-    staticClass: "icon is-small"
-  }, [_c('i', {
-    staticClass: "fa fa-reply"
-  })])]), _vm._v(" "), _c('a', {
-    staticClass: "level-item"
-  }, [_c('span', {
-    staticClass: "icon is-small"
-  }, [_c('i', {
-    staticClass: "fa fa-retweet"
-  })])]), _vm._v(" "), _c('a', {
-    staticClass: "level-item"
-  }, [_c('span', {
-    staticClass: "icon is-small"
-  }, [_c('i', {
-    staticClass: "fa fa-heart"
-  })])])])])
-}]}
+  }, [_c('p', [_c('strong', [_vm._t("name", [_vm._v("Anonymous")])], 2), _vm._v(" "), _c('small', [_vm._t("time")], 2), _vm._v(" "), _c('br'), _vm._v(" "), _vm._t("default")], 2)])])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

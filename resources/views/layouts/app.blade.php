@@ -30,20 +30,14 @@
                             <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma logo">
                         </a>
                         <a class="nav-item is-tab is-hidden-mobile is-active">Home</a>
-                        <a class="nav-item is-tab is-hidden-mobile">Features</a>
-                        <a class="nav-item is-tab is-hidden-mobile">Pricing</a>
-                        <a class="nav-item is-tab is-hidden-mobile">About</a>
                     </div>
-                    <span class="nav-toggle">
+                    <span class="nav-toggle" @click="navToggle">
                         <span></span>
                         <span></span>
                         <span></span>
                     </span>
-                    <div class="nav-right nav-menu">
+                    <div class="nav-right nav-menu" v-bind:class="{ 'is-active': navactive }">
                         <a class="nav-item is-tab is-hidden-tablet is-active">Home</a>
-                        <a class="nav-item is-tab is-hidden-tablet">Features</a>
-                        <a class="nav-item is-tab is-hidden-tablet">Pricing</a>
-                        <a class="nav-item is-tab is-hidden-tablet">About</a>
                         @if (Auth::guest())
                         <a class="nav-item is-tab" href="{{ route('login') }}">Login</a>
                         <a class="nav-item is-tab" href="{{ route('register') }}">Register</a>
